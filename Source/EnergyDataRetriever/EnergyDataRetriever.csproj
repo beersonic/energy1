@@ -229,17 +229,27 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\sampleData.txt" />
+    <Content Include="AWSInfo.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="EnergyGain.aspx" />
     <Content Include="Global.asax" />
     <Content Include="images\database.png" />
     <Content Include="images\drive.png" />
     <Content Include="images\server.png" />
     <Content Include="styles\styles.css" />
+    <Content Include="Views\WebFormViewer1.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="AWSInfo.aspx.cs">
+      <DependentUpon>AWSInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AWSInfo.aspx.designer.cs">
+      <DependentUpon>AWSInfo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\CalculatorController.cs" />
     <Compile Include="Controllers\DailyDataController.cs" />
     <Compile Include="DataStore.cs" />
@@ -250,17 +260,39 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EnergyGain.aspx.cs">
+      <DependentUpon>EnergyGain.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EnergyGain.aspx.designer.cs">
+      <DependentUpon>EnergyGain.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Mobile.Master.cs">
+      <DependentUpon>Mobile.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mobile.Master.designer.cs">
+      <DependentUpon>Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Models\AnalyticsData.cs" />
     <Compile Include="Models\EnergyData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\WebFormViewer1.aspx.cs">
+      <DependentUpon>WebFormViewer1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\WebFormViewer1.aspx.designer.cs">
+      <DependentUpon>WebFormViewer1.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
     <None Include="images\README" />
     <Content Include="packages.config" />
+    <Content Include="Mobile.Master" />
     <None Include="Properties\PublishProfiles\AwsWebApp120171128081932 - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

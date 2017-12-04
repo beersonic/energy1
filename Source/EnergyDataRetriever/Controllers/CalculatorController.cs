@@ -11,6 +11,14 @@ namespace EnergyDataRetriever.Controllers
 {
     public class CalculatorController : ApiController
     {
+        /*
+        public double GetTotalProfit()
+        {
+            AnalyticsData ad = new AnalyticsData();
+
+            (new DailyDataController()).GetAll().Sum()
+        }
+        */
         [Route("api/GetProfitToday")]
         public AnalyticsData GetDailyProfit()
         {
