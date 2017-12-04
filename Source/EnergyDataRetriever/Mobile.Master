@@ -15,12 +15,14 @@
         
         </asp:ContentPlaceHolder>
     </div>
+        Hello Mobile<br />
         Energy:
         <asp:Label ID="LabelEnergyToday" runat="server" Text="N/A"></asp:Label>
         &nbsp;kWh<br />
         Total:
         <asp:Label ID="LabelEnergyTotal" runat="server" Text="N/A"></asp:Label>
 &nbsp;kWh<br />
+        <br />
         <asp:Panel ID="Panel1" runat="server" BorderStyle="Solid" >
             Income:
             <asp:Label ID="LabelIncomeToday" runat="server" Text="N/A"></asp:Label>

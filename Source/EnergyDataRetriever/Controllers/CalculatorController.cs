@@ -11,18 +11,22 @@ namespace EnergyDataRetriever.Controllers
 {
     public class CalculatorController : ApiController
     {
-        /*
+        const int TOTAL_SECOND_A_DAY = 24 * 3600;
+
+        [Route("api/GetTotal")]
         public double GetTotalProfit()
         {
             AnalyticsData ad = new AnalyticsData();
 
-            (new DailyDataController()).GetAll().Sum()
+            double totalOnMonth = (new DailyDataController()).GetAll().Sum(x => x.Yield);
+            double addOn = (DateTime.Now - (new DateTime(2017, 10, 31))).TotalDays / 31 * 1200;
+            return totalOnMonth + addOn;
         }
-        */
+
         [Route("api/GetProfitToday")]
         public AnalyticsData GetDailyProfit()
         {
-            return GetProfitByDate(DateTime.Now);
+            return GetProfitByDateTimeTest(DateTime.Now);
         }
         [Route("api/GetProfitByDate")]
         public AnalyticsData GetProfitByDateYYYYMMDD(String timestampYYYYMMDD)
@@ -35,16 +39,19 @@ namespace EnergyDataRetriever.Controllers
             }
 
             DateTime timestamp2 = new DateTime(int.Parse(sm.Groups[1].Value), int.Parse(sm.Groups[2].Value), int.Parse(sm.Groups[3].Value));
-            return GetProfitByDate(timestamp2);
+            return GetProfitByDateTimeTest(timestamp2);
         }
-        private AnalyticsData GetProfitByDate(DateTime timestamp)
+        private AnalyticsData GetProfitByDateTimeTest(DateTime timestamp)
         {
             Models.EnergyData ed = (new DailyDataController()).Get(timestamp.ToString("yyyyMMdd"));
 
             int investerCount = 10;
             double pricePerUnit = 1.4;
 
-            double profit = (ed.Yield * pricePerUnit) / investerCount;
+            int secondFromMidnight = (timestamp.Hour * 3600) + (timestamp.Minute * 60) + timestamp.Second;
+            double currentYield = ed.Yield * (double)secondFromMidnight / (double)TOTAL_SECOND_A_DAY;
+
+            double profit = (currentYield * pricePerUnit) / investerCount;
 
             AnalyticsData ad = new AnalyticsData()
             {
@@ -54,7 +61,7 @@ namespace EnergyDataRetriever.Controllers
                 ,
                 Profit = profit
                 ,
-                UnitCount = ed.Yield
+                UnitCount = currentYield
             };
             return ad;
         }
