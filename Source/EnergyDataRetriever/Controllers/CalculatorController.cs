@@ -14,22 +14,22 @@ namespace EnergyDataRetriever.Controllers
         const int TOTAL_SECOND_A_DAY = 24 * 3600;
 
         [Route("api/GetTotal")]
-        public double GetTotalProfit()
+        public double GetTotalProfit(int projectId)
         {
             AnalyticsData ad = new AnalyticsData();
 
-            double totalOnMonth = (new DailyDataController()).GetAll().Sum(x => x.Yield);
+            double totalOnMonth = (new DailyDataController()).GetAllById(projectId).Sum(x => x.Yield);
             double addOn = (DateTime.Now - (new DateTime(2017, 10, 31))).TotalDays / 31 * 1200;
             return totalOnMonth + addOn;
         }
 
         [Route("api/GetProfitToday")]
-        public AnalyticsData GetDailyProfit()
+        public AnalyticsData GetDailyProfit(int projectId)
         {
-            return GetProfitByDateTimeTest(DateTime.Now);
+            return GetProfitByDateTimeTest(projectId, DateTime.Now);
         }
         [Route("api/GetProfitByDate")]
-        public AnalyticsData GetProfitByDateYYYYMMDD(String timestampYYYYMMDD)
+        public AnalyticsData GetProfitByDateYYYYMMDD(int projectId, String timestampYYYYMMDD)
         {
             Regex rx = new Regex(@"(\d{4})(\d{2})(\d{2})");
             Match sm;
@@ -39,11 +39,11 @@ namespace EnergyDataRetriever.Controllers
             }
 
             DateTime timestamp2 = new DateTime(int.Parse(sm.Groups[1].Value), int.Parse(sm.Groups[2].Value), int.Parse(sm.Groups[3].Value));
-            return GetProfitByDateTimeTest(timestamp2);
+            return GetProfitByDateTimeTest(projectId, timestamp2);
         }
-        private AnalyticsData GetProfitByDateTimeTest(DateTime timestamp)
+        private AnalyticsData GetProfitByDateTimeTest(int projectId, DateTime timestamp)
         {
-            Models.EnergyData ed = (new DailyDataController()).Get(timestamp.ToString("yyyyMMdd"));
+            Models.EnergyData ed = (new DailyDataController()).Get(projectId, timestamp.ToString("yyyyMMdd"));
 
             int investerCount = 10;
             double pricePerUnit = 1.4;

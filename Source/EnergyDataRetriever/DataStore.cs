@@ -11,7 +11,9 @@ namespace EnergyDataRetriever
 {
     public class DataStore
     {
-        List<EnergyData> _listEnergyData = new List<EnergyData>();
+        Dictionary<int, ProjectData> _dictProjectIdToInfo = new Dictionary<int, ProjectData>();
+
+        //List<EnergyData> _listEnergyData = new List<EnergyData>();
         static DataStore _instance = null;
 
         public static DataStore Get()
@@ -23,19 +25,23 @@ namespace EnergyDataRetriever
             }
             return _instance;
         }
-        public EnergyData GetByDate(DateTime dt)
+        public EnergyData GetByDate(int projectId, DateTime dt)
         {
-            EnergyData entry = _listEnergyData.First(e => e.TimeStamp.Day == dt.Day);
+            var projectInfo = _dictProjectIdToInfo.First(e => e.Key == projectId);
+            EnergyData entry = projectInfo.Value.listEnergyData.First(e => e.TimeStamp.Day == dt.Day);
             return entry;
         }
-        public IQueryable<EnergyData> GetAll()
+        public IQueryable<ProjectData> GetAll()
         {
-            return _listEnergyData.AsQueryable();
+            return _dictProjectIdToInfo.Values.AsQueryable();
         }
         private void Init()
         {
             String sampleFile = HostingEnvironment.MapPath(@"\App_Data\sampleData.txt");
             StreamReader sr = new StreamReader(sampleFile);
+
+            // mock data per day
+            List<EnergyData> listEnergyData = new List<EnergyData>();
             while (!sr.EndOfStream)
             {
                 string line = sr.ReadLine();
@@ -57,8 +63,19 @@ namespace EnergyDataRetriever
 
 
                 EnergyData ed = new EnergyData() { Yield = yield, TimeStamp = timestamp };
-                _listEnergyData.Add(ed);
+                listEnergyData.Add(ed);
             }
+
+            // mock projects
+            var projectInfo = new ProjectData() { projectSize = 100000, listEnergyData = listEnergyData };
+            _dictProjectIdToInfo.Add(projectInfo.projectId, projectInfo);
+
+            projectInfo = new ProjectData() { projectSize = 200000, listEnergyData = listEnergyData };
+            _dictProjectIdToInfo.Add(projectInfo.projectId, projectInfo);
+
+            projectInfo = new ProjectData() { projectSize = 500000, listEnergyData = listEnergyData };
+            _dictProjectIdToInfo.Add(projectInfo.projectId, projectInfo);
+            
         }
     }
 }

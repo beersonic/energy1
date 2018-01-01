@@ -40,6 +40,15 @@ namespace EnergyDataRetriever {
         protected global::System.Web.UI.Timer TimerUpdateLabel;
         
         /// <summary>
+        /// DropDownListProject control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListProject;
+        
+        /// <summary>
         /// TimedPanel control.
         /// </summary>
         /// <remarks>
@@ -65,15 +74,6 @@ namespace EnergyDataRetriever {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelEnergyTotal;
-        
-        /// <summary>
-        /// Panel1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel1;
         
         /// <summary>
         /// LabelIncomeToday control.

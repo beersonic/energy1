@@ -18,7 +18,7 @@ namespace EnergyDataRetriever.Controllers
         }
 
         [Route("api/GetByDate")]
-        public EnergyData Get(String datetimeYYYYMMDD)
+        public EnergyData Get(int id, String datetimeYYYYMMDD)
         {
             EnergyData result = null;
 
@@ -30,15 +30,23 @@ namespace EnergyDataRetriever.Controllers
             }
 
             DateTime timestamp = new DateTime(int.Parse(sm.Groups[1].Value), int.Parse(sm.Groups[2].Value), int.Parse(sm.Groups[3].Value));
-            result = DataStore.Get().GetByDate(timestamp);
+            result = DataStore.Get().GetByDate(id, timestamp);
 
             return result;
         }
 
         [Route("api/GetAll")]
-        public IQueryable<EnergyData> GetAll()
+        public IQueryable<ProjectData> GetAll()
         {
             return DataStore.Get().GetAll();
+        }
+
+        [Route("api/GetAllById")]
+        public IQueryable<EnergyData> GetAllById(int projectId)
+        {
+            var listProjectData = DataStore.Get().GetAll();
+            var projectInfo = listProjectData.First(e => e.projectId == projectId);
+            return projectInfo.listEnergyData.AsQueryable();
         }
     }
 }

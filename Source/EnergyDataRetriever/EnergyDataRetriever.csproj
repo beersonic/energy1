@@ -236,6 +236,7 @@
     <Content Include="images\database.png" />
     <Content Include="images\drive.png" />
     <Content Include="images\server.png" />
+    <Content Include="Layout.css" />
     <Content Include="styles\styles.css" />
     <Content Include="Views\WebFormViewer1.aspx" />
     <Content Include="Web.config" />
@@ -270,14 +271,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Mobile.Master.cs">
-      <DependentUpon>Mobile.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Mobile.Master.designer.cs">
-      <DependentUpon>Mobile.Master</DependentUpon>
-    </Compile>
     <Compile Include="Models\AnalyticsData.cs" />
+    <Compile Include="Models\ProjectData.cs" />
     <Compile Include="Models\EnergyData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\WebFormViewer1.aspx.cs">
@@ -292,7 +287,6 @@
   <ItemGroup>
     <None Include="images\README" />
     <Content Include="packages.config" />
-    <Content Include="Mobile.Master" />
     <None Include="Properties\PublishProfiles\AwsWebApp120171128081932 - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
