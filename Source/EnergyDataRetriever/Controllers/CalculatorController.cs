@@ -12,6 +12,7 @@ namespace EnergyDataRetriever.Controllers
     public class CalculatorController : ApiController
     {
         const int TOTAL_SECOND_A_DAY = 24 * 3600;
+        const double pricePerUnit = 1.4;
 
         [Route("api/GetTotal")]
         public double GetTotalProfit(int projectId)
@@ -28,6 +29,7 @@ namespace EnergyDataRetriever.Controllers
         {
             return GetProfitByDateTimeTest(projectId, DateTime.Now);
         }
+
         [Route("api/GetProfitByDate")]
         public AnalyticsData GetProfitByDateYYYYMMDD(int projectId, String timestampYYYYMMDD)
         {
@@ -45,18 +47,13 @@ namespace EnergyDataRetriever.Controllers
         {
             Models.EnergyData ed = (new DailyDataController()).Get(projectId, timestamp.ToString("yyyyMMdd"));
 
-            int investerCount = 10;
-            double pricePerUnit = 1.4;
-
             int secondFromMidnight = (timestamp.Hour * 3600) + (timestamp.Minute * 60) + timestamp.Second;
             double currentYield = ed.Yield * (double)secondFromMidnight / (double)TOTAL_SECOND_A_DAY;
 
-            double profit = (currentYield * pricePerUnit) / investerCount;
+            double profit = (currentYield * pricePerUnit);
 
             AnalyticsData ad = new AnalyticsData()
             {
-                NumberOfInvester = investerCount
-                ,
                 PricePerUnit = pricePerUnit
                 ,
                 Profit = profit
@@ -64,6 +61,11 @@ namespace EnergyDataRetriever.Controllers
                 UnitCount = currentYield
             };
             return ad;
+        }
+
+        public double GetPricePerUnit()
+        {
+            return pricePerUnit;
         }
     }
 }

@@ -49,6 +49,69 @@ namespace EnergyDataRetriever {
         protected global::System.Web.UI.WebControls.DropDownList DropDownListProject;
         
         /// <summary>
+        /// TimedPanelProject1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel TimedPanelProject1;
+        
+        /// <summary>
+        /// LabelTotalShareAmount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelTotalShareAmount;
+        
+        /// <summary>
+        /// LabelPricePerShare control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelPricePerShare;
+        
+        /// <summary>
+        /// TextBoxInvest control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBoxInvest;
+        
+        /// <summary>
+        /// TimedPanelProject2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel TimedPanelProject2;
+        
+        /// <summary>
+        /// LabelYourShare control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelYourShare;
+        
+        /// <summary>
+        /// LabelYourSharePct control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelYourSharePct;
+        
+        /// <summary>
         /// TimedPanel control.
         /// </summary>
         /// <remarks>
@@ -56,15 +119,6 @@ namespace EnergyDataRetriever {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel TimedPanel;
-        
-        /// <summary>
-        /// LabelEnergyToday control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelEnergyToday;
         
         /// <summary>
         /// LabelEnergyTotal control.
@@ -76,13 +130,13 @@ namespace EnergyDataRetriever {
         protected global::System.Web.UI.WebControls.Label LabelEnergyTotal;
         
         /// <summary>
-        /// LabelIncomeToday control.
+        /// LabelEnergyToday control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelIncomeToday;
+        protected global::System.Web.UI.WebControls.Label LabelEnergyToday;
         
         /// <summary>
         /// LabelStatus control.
@@ -92,5 +146,23 @@ namespace EnergyDataRetriever {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelStatus;
+        
+        /// <summary>
+        /// LabelIncomeToday control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelIncomeToday;
+        
+        /// <summary>
+        /// LabelIncomeTotal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelIncomeTotal;
     }
 }

@@ -17,6 +17,12 @@ namespace EnergyDataRetriever.Controllers
             return Ok("Hello World WEB API");
         }
 
+        [Route("api/GetProjectInfo")]
+        public ProjectData GetProjectInfo(int projectId)
+        {
+            return DataStore.Get().GetAll().First(p => p.projectId == projectId);
+        }
+
         [Route("api/GetByDate")]
         public EnergyData Get(int id, String datetimeYYYYMMDD)
         {
