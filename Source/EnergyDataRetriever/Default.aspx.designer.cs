@@ -130,6 +130,15 @@ namespace EnergyDataRetriever {
         protected global::System.Web.UI.WebControls.Label LabelEnergyTotal;
         
         /// <summary>
+        /// LabelIncomeTotal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelIncomeTotal;
+        
+        /// <summary>
         /// LabelEnergyToday control.
         /// </summary>
         /// <remarks>
@@ -137,15 +146,6 @@ namespace EnergyDataRetriever {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelEnergyToday;
-        
-        /// <summary>
-        /// LabelStatus control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelStatus;
         
         /// <summary>
         /// LabelIncomeToday control.
@@ -157,12 +157,66 @@ namespace EnergyDataRetriever {
         protected global::System.Web.UI.WebControls.Label LabelIncomeToday;
         
         /// <summary>
-        /// LabelIncomeTotal control.
+        /// LabelSystemStart control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelIncomeTotal;
+        protected global::System.Web.UI.WebControls.Label LabelSystemStart;
+        
+        /// <summary>
+        /// LabelSystemUpTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelSystemUpTime;
+        
+        /// <summary>
+        /// LabelStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelStatus;
+        
+        /// <summary>
+        /// LabelYourYieldToday control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelYourYieldToday;
+        
+        /// <summary>
+        /// LabelYourIncomeToday control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelYourIncomeToday;
+        
+        /// <summary>
+        /// LabelYourTotalYield control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelYourTotalYield;
+        
+        /// <summary>
+        /// LabelYourTotalIncome control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelYourTotalIncome;
     }
 }

@@ -9,7 +9,7 @@ using System.Web.Http;
 
 namespace EnergyDataRetriever.Controllers
 {
-    public class DailyDataController : ApiController
+    public class RawEnergyDataController : ApiController
     {
         [Route("api/Test")]
         public IHttpActionResult GetTest()

@@ -79,7 +79,7 @@ namespace EnergyDataRetriever
 
         void InitDropDownProject()
         {
-            DailyDataController ddc = new DailyDataController();
+            RawEnergyDataController ddc = new RawEnergyDataController();
             var projects = ddc.GetAll();
             var pList = from p
                       in projects
@@ -120,18 +120,35 @@ namespace EnergyDataRetriever
         {
             CalculatorController cc = new CalculatorController();
             AnalyticsData ad = cc.GetDailyProfit(_currentId);
-
             double totalProfit = cc.GetTotalProfit(_currentId);
             double pricePerUnit = cc.GetPricePerUnit();
+            DateTime startDate = cc.GetStartDate(_currentId);
+
+            // System
+            {
+                LabelEnergyToday.Text = ad.UnitCount.ToString("N3");
+                LabelIncomeToday.Text = (ad.Profit).ToString("N2");
+
+                LabelEnergyTotal.Text = totalProfit.ToString("N3");
+                LabelIncomeTotal.Text = (totalProfit * pricePerUnit).ToString("N2");
+
+                LabelSystemStart.Text = startDate.ToString("D");
+                LabelSystemUpTime.Text = (DateTime.Now - startDate).ToString("d'd 'h'h 'm'm 's's'");
+                LabelStatus.Text = "OK";
+            }
+
+            // Individual
             double pctShare = GetYourSharePercent();
+            {
+                double yourYieldToday = ad.UnitCount * pctShare;
+                LabelYourYieldToday.Text = yourYieldToday.ToString("N3");
+                LabelYourIncomeToday.Text = (yourYieldToday * pricePerUnit).ToString("N2");
 
-            LabelEnergyToday.Text = ad.UnitCount.ToString("N3");
-            LabelEnergyTotal.Text = totalProfit.ToString("N3");
-
-            LabelIncomeToday.Text = (ad.Profit * pctShare).ToString("N2");
-            LabelIncomeTotal.Text = (totalProfit * pricePerUnit * pctShare).ToString("N2");
-
-            LabelStatus.Text = "OK";
+                double yourTotalYield = totalProfit * pctShare;
+                LabelYourTotalYield.Text = yourTotalYield.ToString("N3");
+                LabelYourTotalIncome.Text = (yourTotalYield * pricePerUnit).ToString("N2");
+            }
+            
         }
 
         double GetYourSharePercent()
@@ -152,15 +169,18 @@ namespace EnergyDataRetriever
                 LabelPricePerShare.Text = pd.pricePerShare.ToString();
 
                 TimedPanelProject1.Update();
+
+                UpdateCurrentInvest();
             }
         }
 
         private ProjectData GetCurrentProjectData()
         {
-            DailyDataController dc = new DailyDataController();
+            RawEnergyDataController dc = new RawEnergyDataController();
             return dc.GetProjectInfo(_currentId);
         }
-        protected void TextBoxInvest_TextChanged(object sender, EventArgs e)
+        
+        private void UpdateCurrentInvest()
         {
             int investSek = 0;
             if (int.TryParse(TextBoxInvest.Text, out investSek))
@@ -175,6 +195,10 @@ namespace EnergyDataRetriever
 
                 TimedPanelProject2.Update();
             }
+        }
+        protected void TextBoxInvest_TextChanged(object sender, EventArgs e)
+        {
+            UpdateCurrentInvest();
         }
     }
 }

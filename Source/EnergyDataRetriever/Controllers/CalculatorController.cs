@@ -13,15 +13,20 @@ namespace EnergyDataRetriever.Controllers
     {
         const int TOTAL_SECOND_A_DAY = 24 * 3600;
         const double pricePerUnit = 1.4;
+        DateTime PROJECT_START_DATE = new DateTime(2017, 10, 31);
+        RawEnergyDataController _energyData = new RawEnergyDataController();
 
         [Route("api/GetTotal")]
         public double GetTotalProfit(int projectId)
         {
-            AnalyticsData ad = new AnalyticsData();
-
-            double totalOnMonth = (new DailyDataController()).GetAllById(projectId).Sum(x => x.Yield);
-            double addOn = (DateTime.Now - (new DateTime(2017, 10, 31))).TotalDays / 31 * 1200;
+            double totalOnMonth = _energyData.GetAllById(projectId).Sum(x => x.Yield);
+            double addOn = (DateTime.Now - PROJECT_START_DATE).TotalDays / 31 * 1200;
             return totalOnMonth + addOn;
+        }
+        [Route("api/GetStartDate")]
+        public DateTime GetStartDate(int projectId)
+        {
+            return _energyData.GetProjectInfo(projectId).startDate;
         }
 
         [Route("api/GetProfitToday")]
@@ -45,7 +50,7 @@ namespace EnergyDataRetriever.Controllers
         }
         private AnalyticsData GetProfitByDateTimeTest(int projectId, DateTime timestamp)
         {
-            Models.EnergyData ed = (new DailyDataController()).Get(projectId, timestamp.ToString("yyyyMMdd"));
+            Models.EnergyData ed = _energyData.Get(projectId, timestamp.ToString("yyyyMMdd"));
 
             int secondFromMidnight = (timestamp.Hour * 3600) + (timestamp.Minute * 60) + timestamp.Second;
             double currentYield = ed.Yield * (double)secondFromMidnight / (double)TOTAL_SECOND_A_DAY;

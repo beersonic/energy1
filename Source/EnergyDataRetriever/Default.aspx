@@ -22,7 +22,7 @@
 
         <div class="container-fluid">
             <div id="banner" style="text-align: center">
-                <h1>Energy Viewer</h1>
+                <h1>Sunabler Portal</h1>
             </div>
             <div id="project">
                 Project:
@@ -44,10 +44,10 @@
                 <asp:UpdatePanel runat="server" ID="TimedPanelProject2" UpdateMode="Conditional">
                     <ContentTemplate>
                         Your share:
-                        <asp:Label ID="LabelYourShare" runat="server"></asp:Label>
+                        <asp:Label ID="LabelYourShare" runat="server" Font-Bold="true"></asp:Label>
 
                         &nbsp;(
-                        <asp:Label ID="LabelYourSharePct" runat="server"></asp:Label>
+                        <asp:Label ID="LabelYourSharePct" runat="server" Font-Bold="true"></asp:Label>
                         &nbsp;%)
 
                     </ContentTemplate>
@@ -60,29 +60,54 @@
                         <asp:AsyncPostBackTrigger ControlID="TimerUpdateLabel" EventName="Tick" />
                     </Triggers>
                     <ContentTemplate>
-                        <div id="RowTotalYield" class="row" style="text-align: center">
+                        <div id="RowTotalYield">
                             Total Energy Yield:&nbsp;	
         <asp:Label ID="LabelEnergyTotal" runat="server" Text="N/A"></asp:Label>
                             &nbsp;kWh<br />
                         </div>
-                        <div id="RowTodayYield" class="row" style="text-align: center">
+                        <div id="RowTotalIncome">
+                            Total Income :&nbsp;	
+            <asp:Label ID="LabelIncomeTotal" runat="server" Text="N/A"></asp:Label>
+                            &nbsp;SEK<br />
+                        </div>
+                        <div id="RowTodayYield" >
                             Today Energy Yield:&nbsp;	
         <asp:Label ID="LabelEnergyToday" runat="server" Text="N/A"></asp:Label>
                             &nbsp;kWh
                         </div>
-                        <div id="RowSystemStatus" class="row" style="text-align: center">
+                        <div id="RowTodayIncome" >
+                            Today Income:&nbsp;	
+        <asp:Label ID="LabelIncomeToday" runat="server" Text="N/A"></asp:Label>
+                            &nbsp;SEK
+                        </div>
+                        <div id="RowSystemStart">
+                            System Status:&nbsp;	
+            <asp:Label ID="LabelSystemStart" runat="server" Text=""></asp:Label>
+                            &nbsp;(<asp:Label ID="LabelSystemUpTime" runat="server" Text=""></asp:Label>
+                            )</div>
+                        <div id="RowSystemStatus">
                             System Status:&nbsp;	
             <asp:Label ID="LabelStatus" runat="server" Text="N/A"></asp:Label>
                         </div>
                         <hr />
-                        <div id="RowTodayIncome" class="row" style="text-align: center; font-weight: bold">
-                            Your Income Today:&nbsp;	
-            <asp:Label ID="LabelIncomeToday" runat="server" Text="N/A"></asp:Label>
-                            &nbsp;SEK<br />
+                        <div id="RowYourYieldToday" style="font-weight: bold">
+                            Your Energy Yield Today:&nbsp;	
+            <asp:Label ID="LabelYourYieldToday" runat="server" Text="N/A"></asp:Label>
+                            &nbsp;kWh<br />
                         </div>
-                        <div id="RowTotalIncome" class="row" style="text-align: center; font-weight: bold">
-                            Total Income :&nbsp;	
-            <asp:Label ID="LabelIncomeTotal" runat="server" Text="N/A"></asp:Label>
+                        <div id="RowYourIncomeToday" style="font-weight: bold">
+                            Your Income Today:&nbsp;	
+            <asp:Label ID="LabelYourIncomeToday" runat="server" Text="N/A"></asp:Label>
+                            &nbsp;SEK<br /> <br />
+                        </div>
+                        <div id="RowYourTotalYield" style="font-weight: bold">
+                            Your Total Energy Yield:&nbsp;	
+            <asp:Label ID="LabelYourTotalYield" runat="server" Text="N/A"></asp:Label>
+                            &nbsp;kWh<br />
+                        </div>
+                        <div id="RowYourTotalIncome" style="font-weight: bold">
+                            Your Total Income:&nbsp;	
+            <asp:Label ID="LabelYourTotalIncome" runat="server" Text="N/A"></asp:Label>
                             &nbsp;SEK<br />
                         </div>
                     </ContentTemplate>
